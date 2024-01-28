@@ -13,6 +13,7 @@ async function bootstrap() {
     .setTitle('Findash App')
     .setDescription('The Findash API description')
     .setVersion('0.1')
+    //.addBearerAuth() -> for auth on swagger docs
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
