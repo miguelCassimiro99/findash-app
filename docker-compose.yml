@@ -12,5 +12,20 @@ services:
     ports:
       - '5432:5432'
 
+  findash-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: findash-app
+    ports:
+      - '3000:3000'
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - DATABASE_URL=${DATABASE_URL}
+    depends_on:
+      - findash-db
+    volumes:
+      - ./src:/app/src
+
 volumes:
   postgres:
