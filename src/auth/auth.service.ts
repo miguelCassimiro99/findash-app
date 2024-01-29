@@ -22,6 +22,9 @@ export class AuthService {
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) throw new UnauthorizedException('Invalid password');
 
-    return { accessToken: this.jwtService.sign({ userId: user.id }) };
+    return {
+      userName: user.name,
+      accessToken: this.jwtService.sign({ userId: user.id }),
+    };
   }
 }
