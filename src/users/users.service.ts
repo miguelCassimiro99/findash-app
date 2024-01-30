@@ -16,6 +16,11 @@ export class UsersService {
       roundsOfHashing,
     );
 
+    // Check if the user already exists
+    // const user = await this.prisma.user.findUnique({
+    //   where: { email: createUserDto.email },
+    // });
+
     createUserDto.password = hashedPassword;
     return this.prisma.user.create({ data: createUserDto });
   }

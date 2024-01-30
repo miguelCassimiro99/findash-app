@@ -8,6 +8,8 @@ import {
   Delete,
   ParseIntPipe,
   UseGuards,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -29,7 +31,17 @@ export class UsersController {
   @Post()
   @ApiCreatedResponse({ type: UserEntity })
   async create(@Body() createUserDto: CreateUserDto) {
-    return new UserEntity(await this.usersService.create(createUserDto));
+    try {
+      const newUser = await this.usersService.create(createUserDto);
+      return new UserEntity(newUser);
+    } catch (error) {
+      if (error.code === 'P2002' && error.meta?.target?.includes('email')) {
+        throw new HttpException(
+          { message: 'This e-mail already exists' },
+          HttpStatus.CONFLICT,
+        );
+      }
+    }
   }
 
   @Get()

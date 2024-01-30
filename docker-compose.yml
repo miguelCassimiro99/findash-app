@@ -27,5 +27,19 @@ services:
     volumes:
       - ./src:/app/src
 
+  pg-admin:
+    image: dpage/pgadmin4:latest
+    container_name: pg-admin
+    restart: always
+    depends_on:
+      - findash-db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@localhost.com
+      PGADMIN_DEFAULT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 8080:80
+    volumes:
+      - ./data/pgadmin:/var/lib/pgadmin
+
 volumes:
   postgres:

@@ -4,7 +4,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
@@ -13,7 +13,7 @@ async function bootstrap() {
     .setTitle('Findash App')
     .setDescription('The Findash API description')
     .setVersion('0.1')
-    //.addBearerAuth() -> for auth on swagger docs
+    .addBearerAuth() //-> for auth on swagger docs
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
