@@ -1,73 +1,74 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Findash App: a Nestjs API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A Nest.js API with Prisma, PostgreSQL for authentication. This project serve as the API for the [Findash Front]([https://github.com/miguelCassimiro99/findash-app](https://github.com/miguelCassimiro99/findash-front))
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features 📜
+- [x]  Authentication (Passport with JWT strategy)
+- [x]  Prisma as ORM
+- [x]  Docker
+- [x]  Swagger Documentation
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This API can be used as a template to create a API with authentication, connection with DB using Prisma and PostgreSQL (all running in Docker).
 
-## Installation
+⚠️ During the development I have a little Type problem using bcrypt with NPM. So I recommend you to use yarn on this application. If install the packages locally, remember to remove the bcrypt from package.json before run the Docker.
 
-```bash
-$ npm install
+How does it works 🔍
+
+
+### Tools 🛠️
+
+🌐 [Nest](https://nestjs.com/)
+
+🌐 [Prisma](https://www.prisma.io/)
+
+🌐 [Docker](https://www.docker.com/)
+
+🌐 [Docker Compose](https://docs.docker.com/compose/)
+
+🌐 [Swagger](https://docs.nestjs.com/openapi/introduction)
+
+
+---
+
+## Setup 🏗️
+
+
+## Getting Started
+
+First you need to create the .env file and add this variables into:
+
+```
+DB_USER=
+DB_PASSWORD=
+
+# the current url passing the user and password
+DATABASE_URL="postgresql://db_user:db_password@localhost:5432/db_name"
+
 ```
 
-## Running the app
+Then, you need to run the Prisma migrations:
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+npx prisma migrate dev
 ```
 
-## Test
+After that assuming you have a knowledge about the Docker and docker-compose.yml files you can simple run:
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
+docker-compose up
 
-## Support
+````
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+It will run your application into a container.
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Open [http://localhost:3000/api](http://localhost:3000/api) with your browser to see the Doc.
 
-## License
 
-Nest is [MIT licensed](LICENSE).
+## Tags:
+
+\#nest \#api \#login \#postgres \#prisma \#auth \#docker
+
+
