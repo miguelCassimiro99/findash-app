@@ -37,3 +37,4 @@ lerna-debug.log*
 .env
 
 endpoints.http
+queries.sql
